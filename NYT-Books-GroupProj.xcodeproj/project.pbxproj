@@ -25,7 +25,6 @@
 		1343D12123EB59CD00CFC68E /* BooksCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343D12023EB59CD00CFC68E /* BooksCVC.swift */; };
 		1343D12323EB59F900CFC68E /* NYTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343D12223EB59F900CFC68E /* NYTAPIClient.swift */; };
 		1343D12523EB5A0800CFC68E /* BooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343D12423EB5A0800CFC68E /* BooksModel.swift */; };
-		80F745B823EB647100A8CAF0 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F745B723EB647100A8CAF0 /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +47,6 @@
 		1343D12023EB59CD00CFC68E /* BooksCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCVC.swift; sourceTree = "<group>"; };
 		1343D12223EB59F900CFC68E /* NYTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTAPIClient.swift; sourceTree = "<group>"; };
 		1343D12423EB5A0800CFC68E /* BooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksModel.swift; sourceTree = "<group>"; };
-		80F745B723EB647100A8CAF0 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +64,6 @@
 		1343D0E823EB549D00CFC68E = {
 			isa = PBXGroup;
 			children = (
-				80F745AC23EB5D1400A8CAF0 /* Secrets */,
 				1343D0F323EB549D00CFC68E /* NYT-Books-GroupProj */,
 				1343D0F223EB549D00CFC68E /* Products */,
 			);
@@ -143,14 +140,6 @@
 				1343D12223EB59F900CFC68E /* NYTAPIClient.swift */,
 			);
 			path = "Network Services";
-			sourceTree = "<group>";
-		};
-		80F745AC23EB5D1400A8CAF0 /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-				80F745B723EB647100A8CAF0 /* Secrets.swift */,
-			);
-			path = Secrets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +219,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1343D0F923EB549D00CFC68E /* BestSellerController.swift in Sources */,
-				80F745B823EB647100A8CAF0 /* Secrets.swift in Sources */,
 				1343D11023EB57F900CFC68E /* BookDetailController.swift in Sources */,
 				1343D12123EB59CD00CFC68E /* BooksCVC.swift in Sources */,
 				1343D12323EB59F900CFC68E /* NYTAPIClient.swift in Sources */,
