@@ -92,4 +92,4 @@ iOSInjectionProject/
 # added git ignore for dsstore and secret file
 
 .DS_Store
-/Secret
+/Secrets
