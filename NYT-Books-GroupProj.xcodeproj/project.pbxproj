@@ -64,6 +64,7 @@
 		1343D0E823EB549D00CFC68E = {
 			isa = PBXGroup;
 			children = (
+				6C4AC86623EB6F9500781D7D /* Secrets */,
 				1343D0F323EB549D00CFC68E /* NYT-Books-GroupProj */,
 				1343D0F223EB549D00CFC68E /* Products */,
 			);
@@ -140,6 +141,13 @@
 				1343D12223EB59F900CFC68E /* NYTAPIClient.swift */,
 			);
 			path = "Network Services";
+			sourceTree = "<group>";
+		};
+		6C4AC86623EB6F9500781D7D /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
