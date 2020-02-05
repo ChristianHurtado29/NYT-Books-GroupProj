@@ -25,11 +25,7 @@
 		1343D12123EB59CD00CFC68E /* BooksCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343D12023EB59CD00CFC68E /* BooksCVC.swift */; };
 		1343D12323EB59F900CFC68E /* NYTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343D12223EB59F900CFC68E /* NYTAPIClient.swift */; };
 		1343D12523EB5A0800CFC68E /* BooksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343D12423EB5A0800CFC68E /* BooksModel.swift */; };
-<<<<<<< HEAD
-		1343D12B23EB5E8200CFC68E /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343D12A23EB5E8200CFC68E /* Secrets.swift */; };
-=======
-		80F745AE23EB5D2600A8CAF0 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F745AD23EB5D2600A8CAF0 /* Secrets.swift */; };
->>>>>>> 677bca8b96833e8c0d6be21f2f0d259c27efda84
+		80F745B823EB647100A8CAF0 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F745B723EB647100A8CAF0 /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,11 +48,7 @@
 		1343D12023EB59CD00CFC68E /* BooksCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksCVC.swift; sourceTree = "<group>"; };
 		1343D12223EB59F900CFC68E /* NYTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTAPIClient.swift; sourceTree = "<group>"; };
 		1343D12423EB5A0800CFC68E /* BooksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksModel.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		1343D12A23EB5E8200CFC68E /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-=======
-		80F745AD23EB5D2600A8CAF0 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
->>>>>>> 677bca8b96833e8c0d6be21f2f0d259c27efda84
+		80F745B723EB647100A8CAF0 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +85,6 @@
 			children = (
 				1343D0F423EB549D00CFC68E /* AppDelegate.swift */,
 				1343D0F623EB549D00CFC68E /* SceneDelegate.swift */,
-				1343D12C23EB5E8A00CFC68E /* Secrets */,
 				1343D12923EB5B5B00CFC68E /* Network Services */,
 				1343D12823EB5B4F00CFC68E /* Model */,
 				1343D12723EB5A5C00CFC68E /* Cells */,
@@ -154,17 +145,10 @@
 			path = "Network Services";
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		1343D12C23EB5E8A00CFC68E /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-				1343D12A23EB5E8200CFC68E /* Secrets.swift */,
-=======
 		80F745AC23EB5D1400A8CAF0 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
-				80F745AD23EB5D2600A8CAF0 /* Secrets.swift */,
->>>>>>> 677bca8b96833e8c0d6be21f2f0d259c27efda84
+				80F745B723EB647100A8CAF0 /* Secrets.swift */,
 			);
 			path = Secrets;
 			sourceTree = "<group>";
@@ -246,11 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1343D0F923EB549D00CFC68E /* BestSellerController.swift in Sources */,
-<<<<<<< HEAD
-				1343D12B23EB5E8200CFC68E /* Secrets.swift in Sources */,
-=======
-				80F745AE23EB5D2600A8CAF0 /* Secrets.swift in Sources */,
->>>>>>> 677bca8b96833e8c0d6be21f2f0d259c27efda84
+				80F745B823EB647100A8CAF0 /* Secrets.swift in Sources */,
 				1343D11023EB57F900CFC68E /* BookDetailController.swift in Sources */,
 				1343D12123EB59CD00CFC68E /* BooksCVC.swift in Sources */,
 				1343D12323EB59F900CFC68E /* NYTAPIClient.swift in Sources */,
