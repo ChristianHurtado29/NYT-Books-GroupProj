@@ -9,12 +9,37 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    var genres: [String]?
+    
+    private let settingsView = SettingsView()
+    
+    override func loadView() {
+        view = settingsView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
         
+        settingsView.pickerView.dataSource = self
+        settingsView.pickerView.delegate = self
+    }
+
+}
+
+extension SettingsViewController: UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 10
+    }
+    
+    
+}
 
+extension SettingsViewController: UIPickerViewDelegate {
+    
 }
