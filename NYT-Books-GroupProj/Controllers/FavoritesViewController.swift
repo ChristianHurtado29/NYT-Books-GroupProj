@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController {
         view.backgroundColor = .white
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
-        favoritesView.favoriteCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "favoriteCell")
+        favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
     }
     
 
