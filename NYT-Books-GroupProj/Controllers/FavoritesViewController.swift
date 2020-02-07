@@ -12,6 +12,14 @@ class FavoritesViewController: UIViewController {
 
     let favoritesView = FavoritesView()
     
+    var books = [Books]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.favoritesView.favoriteCollectionView.reloadData()
+            }
+        }
+    }
+    
     override func loadView() {
         view = favoritesView
     }
