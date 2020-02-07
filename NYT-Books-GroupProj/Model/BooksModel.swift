@@ -9,10 +9,16 @@
 import Foundation
 
 struct BooksData: Codable & Equatable {
+    let listName: String
     let results: [Books]
+    private enum CodingKeys: String, CodingKey {
+        case listName = "list_name"
+        case results
+    }
 }
 
 struct Books: Codable & Equatable {
+    
     let rank: Int
     let weeksOnList: String
     let description: String
