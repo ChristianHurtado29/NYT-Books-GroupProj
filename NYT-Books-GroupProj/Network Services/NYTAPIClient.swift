@@ -13,7 +13,7 @@ struct NYTBooksAPIClient {
     
     static func fetchBooks(for bookType: String, completion: @escaping (Result<[Books], AppError>) -> ()){
         
-        let endPointURL = "https://api.nytimes.com/svc/books/v3/lists/current/\(bookType).json?api-key=\(Secrets.appKey)"
+        let endPointURL = "https://api.nytimes.com/svc/books/v3/lists/current/\(bookType.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!).json?api-key=\(Secrets.appKey)"
         
         guard let url = URL(string: endPointURL) else {
             completion(.failure(.badURL(endPointURL)))
