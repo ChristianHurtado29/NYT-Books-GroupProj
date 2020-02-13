@@ -29,10 +29,11 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        view.backgroundColor = .darkGray
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
+        
     }
 
 //    private func loadData() {
@@ -82,10 +83,12 @@ extension FavoritesViewController: FavoriteDelegate {
         //see on amazon
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (alertAction) in
-            <#code#>
+            
         }
         let amazonAction = UIAlertAction(title: "Find on Amazon", style: .default) { (alertAction) in
-            <#code#>
+            guard let amazonURL = favBook.buyLinks.first else {return }
+            guard let url = URL(string: amazonURL.url) else { return }
+            UIApplication.shared.open(url)
         }
         alertController.addAction(deleteAction)
         alertController.addAction(amazonAction)
