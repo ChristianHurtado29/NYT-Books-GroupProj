@@ -11,7 +11,7 @@ import NetworkHelper
 
 struct NYTBooksAPIClient {
     
-    static func fetchBooks(for bookType: String, completion: @escaping (Result<[Books], AppError>) -> ()){
+    static func fetchBooks(for bookType: String, completion: @escaping (Result<[BookInfo], AppError>) -> ()){
         
         let endPointURL = "https://api.nytimes.com/svc/books/v3/lists/current/\(bookType.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!).json?api-key=\(Secrets.appKey)"
         

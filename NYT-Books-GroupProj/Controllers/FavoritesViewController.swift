@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import DataPersistence
 
 class FavoritesViewController: UIViewController {
 
     let favoritesView = FavoritesView()
+    //put data persistence here
     
-    var books = [Books]() {
+    var books = [BookInfo]() {
         didSet {
             DispatchQueue.main.async {
                 self.favoritesView.favoriteCollectionView.reloadData()
@@ -27,12 +29,20 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .brown
+        
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
     }
 
+//    private func loadData() {
+//        do {
+//            books = try data
+//        }catch {
+//
+//        }
+//
+//    }
 }
 
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
@@ -58,8 +68,40 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let selectedBook = books[indexPath.row]
         cell.backgroundColor = .white
         cell.configureCell(book: selectedBook)
+        cell.delegate = self
         
         return cell
+    }
+    
+    
+}
+
+extension FavoritesViewController: FavoriteDelegate {
+    func didFavorite(_ favoriteCell: FavoritesCVC, _ favBook: BookInfo) {
+        //delete item
+        //see on amazon
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (alertAction) in
+            <#code#>
+        }
+        let amazonAction = UIAlertAction(title: "Find on Amazon", style: .default) { (alertAction) in
+            <#code#>
+        }
+        alertController.addAction(deleteAction)
+        alertController.addAction(amazonAction)
+        
+        present(alertController, animated: true)
+        
+    }
+    
+    private func didDelete(book: BookInfo) {
+        guard let index = books.firstIndex(of: book) else {return}
+        
+        do {
+            //data persistence delete here
+        } catch {
+            
+        }
     }
     
     
