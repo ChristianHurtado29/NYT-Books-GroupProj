@@ -74,6 +74,10 @@ extension FavoritesViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //segue to detail controller
+    }
+    
     
 }
 
