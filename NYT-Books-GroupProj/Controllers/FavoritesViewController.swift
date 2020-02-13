@@ -44,18 +44,19 @@ class FavoritesViewController: UIViewController {
         view.backgroundColor = .darkGray
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
+        dataPersistence.delegate = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
         
     }
 
-//    private func loadData() {
-//        do {
-//            books = try data
-//        }catch {
-//
-//        }
-//
-//    }
+    private func loadData() {
+        do {
+            books = try dataPersistence.loadItems()
+        }catch {
+            print("could not load favorites")
+        }
+
+    }
 }
 
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
@@ -117,9 +118,22 @@ extension FavoritesViewController: FavoriteDelegate {
         
         do {
             //data persistence delete here
+            try dataPersistence.deleteItem(at: index)
         } catch {
-            
+            print("error deleting item: \(error)")
         }
+    }
+    
+    
+}
+
+extension FavoritesViewController: DataPersistenceDelegate {
+    func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        loadData()
+    }
+    
+    func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        loadData()
     }
     
     
