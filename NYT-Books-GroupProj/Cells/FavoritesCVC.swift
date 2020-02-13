@@ -9,11 +9,15 @@
 import UIKit
 import ImageKit
 
+protocol FavoriteDelegate {
+    func didFavorite(_ favoriteCell: FavoritesCVC, _ favBook: BookInfo)
+}
+
 class FavoritesCVC: UICollectionViewCell {
     
     public lazy var favoriteImage: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
+        iv.backgroundColor = .systemGroupedBackground
         iv.image = UIImage(systemName: "book.circle")
         return iv
     }()
@@ -21,6 +25,7 @@ class FavoritesCVC: UICollectionViewCell {
     public lazy var editButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "pencil.and.ellipsis.rectangle"), for: .normal)
+        button.addTarget(self, action: #selector(editButtonPressed(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -36,6 +41,9 @@ class FavoritesCVC: UICollectionViewCell {
         text.backgroundColor = .orange
         return text
     }()
+    
+    public var delegate: FavoriteDelegate!
+    private var bookItem: BookInfo!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,6 +61,10 @@ class FavoritesCVC: UICollectionViewCell {
         setUpEditButtonConstraints()
         setUpTitleLabelConstraints()
         setUpTextViewConstraints()
+    }
+    
+    @objc private func editButtonPressed(_ sender: UIButton) {
+        delegate.didFavorite(self, bookItem)
     }
     
     private func setUpFavoriteImageConstraints() {
@@ -108,7 +120,7 @@ class FavoritesCVC: UICollectionViewCell {
         ])
     }
     
-    public func configureCell(book: Books) {
+    public func configureCell(book: BookInfo) {
         titleLabel.text = book.title
         
         textView.text = book.description
