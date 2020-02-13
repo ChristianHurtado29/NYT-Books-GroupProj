@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageKit
 
 class FavoritesCVC: UICollectionViewCell {
     
@@ -105,6 +106,24 @@ class FavoritesCVC: UICollectionViewCell {
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
+    }
+    
+    public func configureCell(book: Books) {
+        titleLabel.text = book.title
+        
+        textView.text = book.description
+        
+        favoriteImage.getImage(with: book.bookImage) { [weak self](result) in
+            
+            switch result {
+            case .failure(let appError):
+                print("no image found: \(appError)")
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.favoriteImage.image = image
+                }
+            }
+        }
     }
     
 }
