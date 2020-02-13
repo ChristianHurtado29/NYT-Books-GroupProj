@@ -123,8 +123,8 @@
 		1343D12723EB5A5C00CFC68E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1343D11E23EB59C100CFC68E /* FavoritesCVC.swift */,
 				1343D12023EB59CD00CFC68E /* BooksCVC.swift */,
+				1343D11E23EB59C100CFC68E /* FavoritesCVC.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
