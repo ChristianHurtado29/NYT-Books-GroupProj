@@ -11,12 +11,12 @@ import DataPersistence
 
 class FavoritesViewController: UIViewController {
     
-    public var dataPersistence: DataPersistence<Books>
+    public var dataPersistence: DataPersistence<BookInfo>
     
     let favoritesView = FavoritesView()
     //put data persistence here
     
-    init(_ dataPersistence: DataPersistence<Books>) {
+    init(_ dataPersistence: DataPersistence<BookInfo>) {
       self.dataPersistence = dataPersistence
       //self.book = book
       super.init(nibName: nil, bundle: nil)

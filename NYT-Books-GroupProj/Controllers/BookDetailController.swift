@@ -11,9 +11,9 @@ import DataPersistence
 
 class BookDetailController: UIViewController {
     
-    public var dataPersistence: DataPersistence<Books>
+    public var dataPersistence: DataPersistence<BookInfo>
     
-    init(_ dataPersistence: DataPersistence<Books>) {
+    init(_ dataPersistence: DataPersistence<BookInfo>) {
       self.dataPersistence = dataPersistence
       //self.book = book
       super.init(nibName: nil, bundle: nil)

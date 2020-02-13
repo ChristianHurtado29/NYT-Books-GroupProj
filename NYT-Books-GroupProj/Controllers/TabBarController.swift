@@ -11,7 +11,7 @@ import DataPersistence
 
 class TabBarController: UITabBarController {
     
-    private var dataPersistence = DataPersistence<Books>(filename: "books.plist")
+    private var dataPersistence = DataPersistence<BookInfo>(filename: "books.plist")
     
    // private var userPreference = UserPreference()
     

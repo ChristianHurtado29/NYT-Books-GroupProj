@@ -11,7 +11,7 @@ import DataPersistence
 
 class SettingsViewController: UIViewController {
     
-    public var dataPersistence: DataPersistence<Books>!
+    public var dataPersistence: DataPersistence<BookInfo>!
     
     var genres: [String]?
     
