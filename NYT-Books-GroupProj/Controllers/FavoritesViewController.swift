@@ -32,7 +32,6 @@ class FavoritesViewController: UIViewController {
         favoritesView.favoriteCollectionView.dataSource = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
     }
-    
 
 }
 
@@ -49,13 +48,16 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 
 extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return books.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath)
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as? FavoritesCVC else {
+            fatalError("could not downcast as FavoritesCVC")
+        }
+        let selectedBook = books[indexPath.row]
         cell.backgroundColor = .white
+        cell.configureCell(book: selectedBook)
         
         return cell
     }
