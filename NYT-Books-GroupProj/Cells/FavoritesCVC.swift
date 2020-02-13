@@ -83,9 +83,7 @@ class FavoritesCVC: UICollectionViewCell {
     
     private func setUpEditButtonConstraints() {
         addSubview(editButton)
-
         editButton.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             editButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             editButton.leadingAnchor.constraint(equalTo: favoriteImage.trailingAnchor, constant: 8),
