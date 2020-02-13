@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import DataPersistence
 
 class FavoritesViewController: UIViewController {
-
+    
+    public var dataPersistence: DataPersistence<Books>
+    
     let favoritesView = FavoritesView()
+    
+    init(_ dataPersistence: DataPersistence<Books>) {
+      self.dataPersistence = dataPersistence
+      //self.book = book
+      super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
     
     var books = [Books]() {
         didSet {
@@ -26,7 +39,6 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .brown
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
@@ -36,14 +48,12 @@ class FavoritesViewController: UIViewController {
 }
 
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth = UIScreen.main.bounds.size
         let itemWidth: CGFloat = maxWidth.width * 0.90
         let itemHeight: CGFloat = maxWidth.height * 0.50
         return CGSize(width: itemWidth, height: itemHeight)
     }
-    
 }
 
 extension FavoritesViewController: UICollectionViewDataSource {
@@ -58,7 +68,6 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let selectedBook = books[indexPath.row]
         cell.backgroundColor = .white
         cell.configureCell(book: selectedBook)
-        
         return cell
     }
     

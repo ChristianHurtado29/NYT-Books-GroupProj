@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import DataPersistence
 
 class SettingsViewController: UIViewController {
+    
+    public var dataPersistence: DataPersistence<Books>!
     
     var genres: [String]?
     
@@ -21,7 +24,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
         settingsView.pickerView.dataSource = self
         settingsView.pickerView.delegate = self
     }
