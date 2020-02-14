@@ -139,6 +139,7 @@ extension FavoritesViewController: FavoriteDelegate {
         } catch {
             print("error deleting item: \(error)")
         }
+    }
 
     
 }
