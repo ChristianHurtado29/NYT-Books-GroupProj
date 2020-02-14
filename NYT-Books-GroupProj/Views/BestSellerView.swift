@@ -60,5 +60,5 @@ class BestSellerView: UIView {
             filterPicker.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
+    
 }

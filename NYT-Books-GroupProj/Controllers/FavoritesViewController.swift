@@ -44,6 +44,7 @@ class FavoritesViewController: UIViewController {
         view.backgroundColor = .darkGray
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
+        dataPersistence.delegate = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
         dataPersistence.delegate = self
         
@@ -118,6 +119,7 @@ extension FavoritesViewController: FavoriteDelegate {
             guard let url = URL(string: favBook.buyLinks[3].url ) else { return }
             UIApplication.shared.open(url)
         }
+
         alertController.addAction(deleteAction)
         alertController.addAction(amazonAction)
         alertController.addAction(appleAction)
@@ -135,13 +137,11 @@ extension FavoritesViewController: FavoriteDelegate {
             //data persistence delete here
             try dataPersistence.deleteItem(at: index)
         } catch {
-            
             print("error deleting item: \(error)")
         }
+    }
 
     
-}
-
 }
 
 extension FavoritesViewController: DataPersistenceDelegate {
@@ -152,6 +152,5 @@ extension FavoritesViewController: DataPersistenceDelegate {
     func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
         loadData()
     }
-
 
 }
