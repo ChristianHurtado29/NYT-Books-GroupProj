@@ -11,7 +11,11 @@ import DataPersistence
 
 class BookDetailController: UIViewController {
     
+    public var book: BookInfo?
+    
     public var dataPersistence: DataPersistence<BookInfo>
+    
+    private let bookDetailView = BookDetailView()
     
     init(_ dataPersistence: DataPersistence<BookInfo>) {
       self.dataPersistence = dataPersistence
@@ -23,9 +27,14 @@ class BookDetailController: UIViewController {
       fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        view = bookDetailView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = book?.title
+        view.backgroundColor = .yellow
     }
     
 
