@@ -17,13 +17,13 @@ class FavoritesViewController: UIViewController {
     //put data persistence here
     
     init(_ dataPersistence: DataPersistence<BookInfo>) {
-      self.dataPersistence = dataPersistence
-      //self.book = book
-      super.init(nibName: nil, bundle: nil)
+        self.dataPersistence = dataPersistence
+        //self.book = book
+        super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     var books = [BookInfo]() {
@@ -40,22 +40,23 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .darkGray
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
+        dataPersistence.delegate = self
         
     }
-
-//    private func loadData() {
-//        do {
-//            books = try data
-//        }catch {
-//
-//        }
-//
-//    }
+    
+    private func loadData() {
+        do {
+            books = try dataPersistence.loadItems()
+        }catch {
+            print("could not load favorites")
+        }
+        
+    }
 }
 
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
@@ -79,7 +80,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let selectedBook = books[indexPath.row]
         cell.backgroundColor = .white
         cell.configureCell(book: selectedBook)
-
+        
         cell.delegate = self
         
         return cell
@@ -98,15 +99,30 @@ extension FavoritesViewController: FavoriteDelegate {
         //see on amazon
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (alertAction) in
-            
+            self.didDelete(book: favBook)
         }
         let amazonAction = UIAlertAction(title: "Find on Amazon", style: .default) { (alertAction) in
             guard let amazonURL = favBook.buyLinks.first else {return }
             guard let url = URL(string: amazonURL.url) else { return }
             UIApplication.shared.open(url)
         }
+        let appleAction = UIAlertAction(title: "Find on Apple Books", style: .default) { (alertAction) in
+            guard let url = URL(string: favBook.buyLinks[1].url) else { return }
+            UIApplication.shared.open(url)
+        }
+        let barnesAction = UIAlertAction(title: "Find on Barnes and Noble", style: .default) { (alertAction) in
+            guard let url = URL(string: favBook.buyLinks[2].url ) else { return }
+            UIApplication.shared.open(url)
+        }
+        let localAction = UIAlertAction(title: "Find Locally", style: .default) { (alertAction) in
+            guard let url = URL(string: favBook.buyLinks[3].url ) else { return }
+            UIApplication.shared.open(url)
+        }
         alertController.addAction(deleteAction)
         alertController.addAction(amazonAction)
+        alertController.addAction(appleAction)
+        alertController.addAction(barnesAction)
+        alertController.addAction(localAction)
         
         present(alertController, animated: true)
         
@@ -117,10 +133,25 @@ extension FavoritesViewController: FavoriteDelegate {
         
         do {
             //data persistence delete here
+            try dataPersistence.deleteItem(at: index)
         } catch {
             
+            print("error deleting item: \(error)")
         }
+
+    
+}
+
+}
+
+extension FavoritesViewController: DataPersistenceDelegate {
+    func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        loadData()
     }
-    
-    
+
+    func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        loadData()
+    }
+
+
 }
