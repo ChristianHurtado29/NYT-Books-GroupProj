@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = createMainTabBarController()
+        window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
     }
 
@@ -52,16 +52,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-    private func createMainTabBarController() -> UITabBarController {
-        let firstvc = BestSellerController(), secondvc = FavoritesViewController(), thirdvc = SettingsViewController()
-        firstvc.tabBarItem = UITabBarItem(title: "Bestseller", image: UIImage(systemName: "rosette"), tag: 0)
-        secondvc.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "bookmark"), tag: 1)
-        thirdvc.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)
-        
-        let tabVC = TabBarController()
-        tabVC.setViewControllers([firstvc,secondvc,thirdvc], animated: true)
-        return tabVC
-    }
+//    private func createMainTabBarController() -> UITabBarController {
+//        let firstvc = BestSellerController(), secondvc = FavoritesViewController(), thirdvc = SettingsViewController()
+//        firstvc.tabBarItem = UITabBarItem(title: "Bestseller", image: UIImage(systemName: "rosette"), tag: 0)
+//        secondvc.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "bookmark"), tag: 1)
+//        thirdvc.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)
+//
+//        let tabVC = TabBarController()
+//        tabVC.setViewControllers([firstvc,secondvc,thirdvc], animated: true)
+//        return tabVC
+//    }
 
 }
 

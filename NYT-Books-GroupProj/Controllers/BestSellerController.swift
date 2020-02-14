@@ -7,11 +7,25 @@
 //
 
 import UIKit
+import DataPersistence
 
 class BestSellerController: UIViewController {
     
     var dataSource = ["testing", "apple", "is this showing?", "hello"]
     let bestseller = BestSellerView()
+        
+    public var dataPersistence: DataPersistence<BookInfo>
+    
+    init(_ dataPersistence: DataPersistence<BookInfo>) {
+      self.dataPersistence = dataPersistence
+      //self.book = book
+      super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
+
     
     override func loadView() {
         view = bestseller
