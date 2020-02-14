@@ -30,9 +30,9 @@ struct NYTBooksAPIClient {
             case .success(let data):
                 
                 do {
-                    let booksInfo = try JSONDecoder().decode(BooksData.self, from: data)
+                    let booksInfo = try JSONDecoder().decode(BooksStatus.self, from: data)
                     
-                    let books = booksInfo.results
+                    let books = booksInfo.results.books
                     
                     completion(.success(books))
                 } catch {

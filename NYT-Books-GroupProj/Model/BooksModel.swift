@@ -8,24 +8,28 @@
 
 import Foundation
 
+struct BooksStatus: Codable & Equatable {
+    let results: BooksData
+}
+
 struct BooksData: Codable & Equatable {
     let listName: String
-    let results: [BookInfo]
+    let books: [BookInfo]
     private enum CodingKeys: String, CodingKey {
         case listName = "list_name"
-        case results
+        case books
     }
 }
 
 struct BookInfo: Codable & Equatable {
     
     let rank: Int
-    let weeksOnList: String
+    let weeksOnList: Int
     let description: String
     let title: String
     let author: String
     let bookImage: String
-    let bookUrl: String
+    let bookUrl: String?
     let buyLinks: [Links]
     private enum CodingKeys: String, CodingKey {
         case rank
