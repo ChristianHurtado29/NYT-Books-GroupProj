@@ -11,15 +11,15 @@ import DataPersistence
 
 class BookDetailController: UIViewController {
     
-    public var book: BookInfo?
+    public var book: BookInfo
     
     public var dataPersistence: DataPersistence<BookInfo>
     
     private let bookDetailView = BookDetailView()
     
-    init(_ dataPersistence: DataPersistence<BookInfo>) {
+    init(_ dataPersistence: DataPersistence<BookInfo>, book: BookInfo) {
       self.dataPersistence = dataPersistence
-      //self.book = book
+      self.book = book
       super.init(nibName: nil, bundle: nil)
     }
 
@@ -33,7 +33,7 @@ class BookDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = book?.title
+        navigationItem.title = book.title
         view.backgroundColor = .yellow
     }
     
