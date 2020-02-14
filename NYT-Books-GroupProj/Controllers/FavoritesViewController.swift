@@ -17,13 +17,13 @@ class FavoritesViewController: UIViewController {
     //put data persistence here
     
     init(_ dataPersistence: DataPersistence<BookInfo>) {
-      self.dataPersistence = dataPersistence
-      //self.book = book
-      super.init(nibName: nil, bundle: nil)
+        self.dataPersistence = dataPersistence
+        //self.book = book
+        super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     var books = [BookInfo]() {
@@ -40,22 +40,23 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .darkGray
         favoritesView.favoriteCollectionView.delegate = self
         favoritesView.favoriteCollectionView.dataSource = self
         dataPersistence.delegate = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
+        dataPersistence.delegate = self
         
     }
-
+    
     private func loadData() {
         do {
             books = try dataPersistence.loadItems()
         }catch {
             print("could not load favorites")
         }
-
+        
     }
 }
 
@@ -80,7 +81,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let selectedBook = books[indexPath.row]
         cell.backgroundColor = .white
         cell.configureCell(book: selectedBook)
-
+        
         cell.delegate = self
         
         return cell
@@ -118,7 +119,7 @@ extension FavoritesViewController: FavoriteDelegate {
             guard let url = URL(string: favBook.buyLinks[3].url ) else { return }
             UIApplication.shared.open(url)
         }
-        
+
         alertController.addAction(deleteAction)
         alertController.addAction(amazonAction)
         alertController.addAction(appleAction)
@@ -138,8 +139,7 @@ extension FavoritesViewController: FavoriteDelegate {
         } catch {
             print("error deleting item: \(error)")
         }
-    }
-    
+
     
 }
 
@@ -147,10 +147,9 @@ extension FavoritesViewController: DataPersistenceDelegate {
     func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
         loadData()
     }
-    
+
     func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
         loadData()
     }
-    
-    
+
 }
