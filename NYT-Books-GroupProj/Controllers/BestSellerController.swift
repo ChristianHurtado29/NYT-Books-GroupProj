@@ -38,7 +38,7 @@ class BestSellerController: UIViewController {
         bestseller.filterPicker.delegate = self
         bestseller.collectionView.delegate = self
         bestseller.collectionView.dataSource = self
-        bestseller.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "bestsellerCell")
+        bestseller.collectionView.register(BooksCVC.self, forCellWithReuseIdentifier: "bestsellerCell")
     }
 
 }
@@ -75,7 +75,7 @@ extension BestSellerController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxSize: CGSize = UIScreen.main.bounds.size
-        let itemWidth: CGFloat = maxSize.width
+        let itemWidth: CGFloat = maxSize.width/2
         let itemHeight: CGFloat = maxSize.height * 0.30
         return CGSize(width: itemWidth, height: itemHeight)
     }
