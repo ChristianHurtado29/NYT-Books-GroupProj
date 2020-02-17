@@ -29,12 +29,6 @@ class TabBarController: UITabBarController {
         return viewController
     }()
     
-    private lazy var bookDetailController: BookDetailController = {
-        let viewController = BookDetailController(dataPersistence)
-        viewController.dataPersistence = dataPersistence
-        return viewController
-    }()
-    
     private lazy var settingsViewController: SettingsViewController = {
         let viewController = SettingsViewController()
         viewController.dataPersistence = dataPersistence

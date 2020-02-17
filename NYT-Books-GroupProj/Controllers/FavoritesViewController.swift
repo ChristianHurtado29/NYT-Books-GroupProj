@@ -18,7 +18,6 @@ class FavoritesViewController: UIViewController {
     
     init(_ dataPersistence: DataPersistence<BookInfo>) {
         self.dataPersistence = dataPersistence
-        //self.book = book
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -89,6 +88,9 @@ extension FavoritesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //segue to detail controller
+        let selectedBook = books[indexPath.row]
+        let bookDetailVC = BookDetailController(dataPersistence, book: selectedBook)
+        navigationController?.pushViewController(bookDetailVC, animated: true)
     }
     
     
