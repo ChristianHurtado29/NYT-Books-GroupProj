@@ -41,4 +41,36 @@ struct NYTBooksAPIClient {
             }
         }
     }
+    
+    
+    static func fetchGenres(completion: @escaping (Result<[Genres], AppError>) -> ()){
+        
+        let endPointURL = "https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=\(Secrets.appKey)"
+        
+        guard let url = URL(string: endPointURL) else {
+            completion(.failure(.badURL(endPointURL)))
+            return
+        }
+
+        let request = URLRequest(url: url)
+        
+        NetworkHelper.shared.performDataTask(with: request) { (result) in
+            
+            switch result {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case .success(let data):
+                
+                do {
+                    let genresInfo = try JSONDecoder().decode(GenresResults.self, from: data)
+                    
+                    let genres = genresInfo
+                    
+                    completion(.success(genres.results))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
 }
