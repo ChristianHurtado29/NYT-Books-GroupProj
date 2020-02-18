@@ -12,8 +12,19 @@ import DataPersistence
 class TabBarController: UITabBarController {
     
     private var dataPersistence = DataPersistence<BookInfo>(filename: "books.plist")
+    var backbroundCollections: Set<UIImageView>  = []
+    var randomSizeList: [CGFloat] = [40, 45, 50, 55, 60, 65]
+    var randomAlpha: [CGFloat] = [0.8, 0.9, 1.0, 1.0]
+    var colors: [UIColor] = [.blue, .systemBlue, .white]
+    var animationTimer: Timer?
+    var minHeight: CGFloat = 0
+    var currentX: CGFloat = 0
+    var counter = 0
+    var alphaCount:CGFloat = 0.0
+    var reset = UIButton()
+    var randomColor = UIColor()
     
-   // private var userPreference = UserPreference()
+    // private var userPreference = UserPreference()
     
     private lazy var bestSellerController: BestSellerController = {
         let viewController = BestSellerController(dataPersistence)
@@ -37,13 +48,50 @@ class TabBarController: UITabBarController {
     }()
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         delegate = self
-        viewControllers = [UINavigationController(rootViewController:bestSellerController), UINavigationController(rootViewController:favoritesViewController), UINavigationController(rootViewController:settingsViewController)]
+        animationTimer = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(loadingScreen), userInfo: nil, repeats: true)
+    }
+    
+    @objc func loadingScreen() {
+        let currentY: CGFloat = minHeight
+        let randomSize = randomSizeList.randomElement()!
         
+        let cell = UIImageView(frame: CGRect(x: currentX, y: currentY, width: randomSize, height: randomSize))
+        cell.layer.cornerRadius = 10
+        cell.backgroundColor = colors.randomElement()!
+        cell.alpha = randomAlpha.randomElement()!
+        self.view.addSubview(cell)
+        backbroundCollections.insert(cell)
+        self.currentX += randomSize
+        
+        if currentX >= view.frame.maxX {
+            self.minHeight += 10
+            currentX = 0
+        }
+        
+        if currentY >= view.frame.maxY {
+            for cell in backbroundCollections {
+                cell.alpha = 1
+            }
+            animationTimer?.invalidate()
+            viewControllers = [UINavigationController(rootViewController:bestSellerController), UINavigationController(rootViewController:favoritesViewController), UINavigationController(rootViewController:settingsViewController)]
+            
+            animationTimer = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(removeCell), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func removeCell() {
+        if !backbroundCollections.isEmpty {
+            let removedCell = backbroundCollections.removeFirst()
+            removedCell.removeFromSuperview()
+        } else {
+            animationTimer?.invalidate()
+            
+        }
     }
     
 }
