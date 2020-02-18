@@ -13,7 +13,14 @@ class BestSellerController: UIViewController {
     
     var dataSource: [String] = []
     let bestseller = BestSellerView()
-    lazy var books = [BookInfo]()
+    var books = [BookInfo]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.bestseller.collectionView.reloadData()
+                self.bestseller.filterPicker.reloadAllComponents()
+            }
+        }
+    }
     
     public var dataPersistence: DataPersistence<BookInfo>
     

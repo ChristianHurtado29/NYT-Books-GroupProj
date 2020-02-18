@@ -63,7 +63,7 @@ class BooksCVC: UICollectionViewCell {
         addSubview(bookTitle)
         bookTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bookTitle.topAnchor.constraint(equalTo: newsImageView.bottomAnchor, constant: 10),
+            bookTitle.topAnchor.constraint(equalTo: newsImageView.bottomAnchor, constant: 8),
             bookTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             bookTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
@@ -75,7 +75,8 @@ class BooksCVC: UICollectionViewCell {
         NSLayoutConstraint.activate([
             bookDiscription.leadingAnchor.constraint(equalTo: bookTitle.leadingAnchor),
             bookDiscription.trailingAnchor.constraint(equalTo: bookTitle.trailingAnchor),
-            bookDiscription.topAnchor.constraint(equalTo: bookTitle.bottomAnchor, constant: 8)
+            bookDiscription.topAnchor.constraint(equalTo: bookTitle.bottomAnchor, constant: 8),
+            bookDiscription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
         ])
     }
     
