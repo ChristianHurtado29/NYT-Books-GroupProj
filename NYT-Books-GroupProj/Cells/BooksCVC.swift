@@ -12,7 +12,6 @@ class BooksCVC: UICollectionViewCell {
     public lazy var newsImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "photo")
-        iv.backgroundColor = .yellow
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -78,5 +77,23 @@ class BooksCVC: UICollectionViewCell {
             bookDiscription.trailingAnchor.constraint(equalTo: bookTitle.trailingAnchor),
             bookDiscription.topAnchor.constraint(equalTo: bookTitle.bottomAnchor, constant: 8)
         ])
+    }
+    
+    public func configureCell(book: BookInfo) {
+        bookTitle.text = book.title
+        
+        bookDiscription.text = book.description
+        
+        newsImageView.getImage(with: book.bookImage) { [weak self](result) in
+            
+            switch result {
+            case .failure(let appError):
+                print("no image found: \(appError)")
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.newsImageView.image = image
+                }
+            }
+        }
     }
 }
