@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
     var backbroundCollections: Set<UIImageView>  = []
     var randomSizeList: [CGFloat] = [40, 45, 50, 55, 60, 65]
     var randomAlpha: [CGFloat] = [0.8, 0.9, 1.0, 1.0]
-    var colors: [UIColor] = [.blue, .systemBlue, .white]
+    var colors: [UIColor] = [.systemPink, .lightGray, .white]
     var animationTimer: Timer?
     var minHeight: CGFloat = 0
     var currentX: CGFloat = 0

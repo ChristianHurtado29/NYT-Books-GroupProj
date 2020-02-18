@@ -61,7 +61,7 @@ class BestSellerController: UIViewController {
         bestseller.filterPicker.reloadAllComponents()
     }
     
-    func loadBooks(_ type: String = "Mass Market Paperback") {
+    func loadBooks(_ type: String = "Combined Print and E-Book Fiction") {
         NYTBooksAPIClient.fetchBooks(for: type) { (result) in
             switch result {
             case .success(let book):
