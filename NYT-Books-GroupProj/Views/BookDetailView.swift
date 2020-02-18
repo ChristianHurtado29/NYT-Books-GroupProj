@@ -10,18 +10,10 @@ import UIKit
 
 class BookDetailView: UIView {
     
-    
-    
     public lazy var bookImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(systemName: "mic")
+        iv.image = UIImage(systemName: "book.circle.fill")
         return iv
-    }()
-    
-    public lazy var linkedButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .red
-        return button
     }()
     
     public lazy var authorLabel: UILabel = {
@@ -50,7 +42,6 @@ class BookDetailView: UIView {
     
     func commonInit() {
         setupBookImage()
-        setupLinkedButton()
         setupAuthorLabel()
         setupTextView()
     }
@@ -63,17 +54,6 @@ class BookDetailView: UIView {
             bookImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             bookImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant:  -40),
             bookImageView.heightAnchor.constraint(equalToConstant: 300)
-        ])
-    }
-    
-    private func setupLinkedButton() {
-        addSubview(linkedButton)
-        linkedButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            linkedButton.topAnchor.constraint(equalTo: bookImageView.topAnchor),
-            linkedButton.trailingAnchor.constraint(equalTo: leadingAnchor, constant:  -10),
-            linkedButton.heightAnchor.constraint(equalToConstant: 120),
-            linkedButton.widthAnchor.constraint(equalToConstant: 120)
         ])
     }
     
