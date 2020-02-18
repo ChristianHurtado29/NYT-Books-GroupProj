@@ -19,7 +19,6 @@ class BookDetailView: UIView {
     public lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.text = "Christian Hurtado"
-        label.textAlignment = .center
         label.textColor = .systemBlue
         return label
     }()

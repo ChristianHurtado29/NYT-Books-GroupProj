@@ -15,6 +15,7 @@ class FavoritesView: UIView {
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemGroupedBackground
+        cv.layer.cornerRadius = 4
         return cv
     }()
 

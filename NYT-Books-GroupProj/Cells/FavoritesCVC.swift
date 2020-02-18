@@ -17,14 +17,15 @@ class FavoritesCVC: UICollectionViewCell {
     
     public lazy var favoriteImage: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .systemGroupedBackground
+        iv.backgroundColor = .systemPink
         iv.image = UIImage(systemName: "book.circle")
         return iv
     }()
     
     public lazy var editButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "pencil.and.ellipsis.rectangle"), for: .normal)
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.tintColor = .systemPink
         button.addTarget(self, action: #selector(editButtonPressed(_:)), for: .touchUpInside)
         return button
     }()
@@ -32,13 +33,16 @@ class FavoritesCVC: UICollectionViewCell {
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Title"
-        label.backgroundColor = .green
+        label.textAlignment = .center
+        label.font = UIFont(name: "Kefa", size: 16)
+        label.layer.cornerRadius = 10
         return label
     }()
     
     private lazy var textView: UITextView = {
         let text = UITextView()
-        text.backgroundColor = .orange
+        text.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        text.layer.cornerRadius = 10
         return text
     }()
     
@@ -73,11 +77,10 @@ class FavoritesCVC: UICollectionViewCell {
         favoriteImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            favoriteImage.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            favoriteImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 80),
-            favoriteImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
-            favoriteImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-    
+            favoriteImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant:  20),
+           favoriteImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            favoriteImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.6),
+            favoriteImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
         ])
     }
     
@@ -88,8 +91,7 @@ class FavoritesCVC: UICollectionViewCell {
             editButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             editButton.leadingAnchor.constraint(equalTo: favoriteImage.trailingAnchor, constant: 8),
             editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            editButton.heightAnchor.constraint(equalToConstant: 60),
-            editButton.widthAnchor.constraint(equalToConstant: 80)
+            editButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
     
