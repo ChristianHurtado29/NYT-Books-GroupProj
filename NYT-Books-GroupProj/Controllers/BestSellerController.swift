@@ -76,7 +76,6 @@ class BestSellerController: UIViewController {
         NYTBooksAPIClient.fetchGenres { (result) in
             switch result {
             case .success(let gernal):
-                print(gernal)
                 for type in gernal {
                     self.dataSource.append(type.listName)
                 }
