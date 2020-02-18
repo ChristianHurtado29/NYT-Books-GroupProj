@@ -121,12 +121,14 @@ extension FavoritesViewController: FavoriteDelegate {
             guard let url = URL(string: favBook.buyLinks[3].url ) else { return }
             UIApplication.shared.open(url)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         alertController.addAction(deleteAction)
         alertController.addAction(amazonAction)
         alertController.addAction(appleAction)
         alertController.addAction(barnesAction)
         alertController.addAction(localAction)
+        alertController.addAction(cancelAction)
         
         present(alertController, animated: true)
         

@@ -20,7 +20,8 @@ class BestSellerView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .systemBackground
+        cv.backgroundColor = .systemPink
+        cv.layer.cornerRadius = 4
         return cv
     }()
     
