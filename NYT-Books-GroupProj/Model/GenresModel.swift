@@ -9,7 +9,7 @@
 import Foundation
 
 struct GenresResults: Codable & Equatable {
-    let results: Genres
+    let results: [Genres]
 }
 
 struct Genres: Codable & Equatable {
