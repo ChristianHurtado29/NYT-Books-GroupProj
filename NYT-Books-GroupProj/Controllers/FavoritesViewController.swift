@@ -46,7 +46,7 @@ class FavoritesViewController: UIViewController {
         dataPersistence.delegate = self
         favoritesView.favoriteCollectionView.register(FavoritesCVC.self, forCellWithReuseIdentifier: "favoriteCell")
         dataPersistence.delegate = self
-        
+        loadData()
     }
     
     private func loadData() {
