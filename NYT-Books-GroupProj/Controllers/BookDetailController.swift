@@ -27,6 +27,12 @@ class BookDetailController: UIViewController {
       fatalError("init(coder:) has not been implemented")
     }
     
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer()
+        gesture.addTarget(self, action: #selector(didTap(_:)))
+        return gesture
+    }()
+    
     override func loadView() {
         view = bookDetailView
     }
@@ -37,5 +43,15 @@ class BookDetailController: UIViewController {
         view.backgroundColor = .yellow
     }
     
+    private func updateUI() {
+        bookDetailView.bookImageView.isUserInteractionEnabled = true
+        bookDetailView.bookImageView.addGestureRecognizer(tapGesture)
+    }
 
+    @objc func didTap(_ gesture: UITapGestureRecognizer) {
+        
+        guard let amazonURL = self.book.buyLinks.first else {return }
+        guard let url = URL(string: amazonURL.url) else { return }
+        UIApplication.shared.open(url)
+    }
 }
