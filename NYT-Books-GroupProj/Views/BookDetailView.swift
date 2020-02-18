@@ -19,6 +19,7 @@ class BookDetailView: UIView {
     public lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.text = "Christian Hurtado"
+        label.textAlignment = .center
         label.textColor = .systemBlue
         return label
     }()
@@ -63,8 +64,8 @@ class BookDetailView: UIView {
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             authorLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 20),
-            authorLabel.leadingAnchor.constraint(equalTo: bookImageView.leadingAnchor, constant: 8),
-            authorLabel.trailingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: -8)
+            authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
     }
     

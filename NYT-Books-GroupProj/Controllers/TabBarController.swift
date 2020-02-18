@@ -53,7 +53,9 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         delegate = self
-        animationTimer = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(loadingScreen), userInfo: nil, repeats: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.animationTimer = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(self.loadingScreen), userInfo: nil, repeats: true)
+        }
     }
     
     @objc func loadingScreen() {
@@ -80,7 +82,7 @@ class TabBarController: UITabBarController {
             animationTimer?.invalidate()
             viewControllers = [UINavigationController(rootViewController:bestSellerController), UINavigationController(rootViewController:favoritesViewController), UINavigationController(rootViewController:settingsViewController)]
             
-            animationTimer = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(removeCell), userInfo: nil, repeats: true)
+            animationTimer = Timer.scheduledTimer(timeInterval: 0.002, target: self, selector: #selector(removeCell), userInfo: nil, repeats: true)
         }
     }
     
