@@ -11,13 +11,18 @@ import DataPersistence
 
 class BestSellerController: UIViewController {
     
-    var dataSource: [String] = []
+    var dataSource: [String] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.bestseller.filterPicker.reloadAllComponents()
+            }
+        }
+    }
     let bestseller = BestSellerView()
     var books = [BookInfo]() {
         didSet {
             DispatchQueue.main.async {
                 self.bestseller.collectionView.reloadData()
-                self.bestseller.filterPicker.reloadAllComponents()
             }
         }
     }
@@ -56,8 +61,8 @@ class BestSellerController: UIViewController {
         bestseller.filterPicker.reloadAllComponents()
     }
     
-    func loadBooks(_ type: String = "Trade Fiction Paperback") {
-        NYTBooksAPIClient.fetchBooks(for: "Trade Fiction Paperback") { (result) in
+    func loadBooks(_ type: String = "Mass Market Paperback") {
+        NYTBooksAPIClient.fetchBooks(for: type) { (result) in
             switch result {
             case .success(let book):
                 self.books = book
@@ -92,7 +97,9 @@ extension BestSellerController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        loadBooks(dataSource[row])
+        let selected = dataSource[row]
+        loadBooks(selected)
+        bestseller.collectionView.reloadData()
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -119,6 +126,12 @@ extension BestSellerController: UICollectionViewDelegateFlowLayout, UICollection
         let itemWidth: CGFloat = maxSize.width/2
         let itemHeight: CGFloat = maxSize.height * 0.30
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selected = books[indexPath.row]
+        let detailVC = BookDetailController(dataPersistence, book: selected)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
