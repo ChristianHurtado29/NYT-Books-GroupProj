@@ -127,7 +127,6 @@
 			children = (
 				1343D10D23EB57C600CFC68E /* TabBarController.swift */,
 				1343D0F823EB549D00CFC68E /* BestSellerController.swift */,
-				1343D10B23EB57B300CFC68E /* FavoritesViewController.swift */,
 				1343D10F23EB57F900CFC68E /* BookDetailController.swift */,
 				1343D11123EB588400CFC68E /* SettingsViewController.swift */,
 			);
@@ -159,6 +158,7 @@
 			children = (
 				1343D12423EB5A0800CFC68E /* BooksModel.swift */,
 				13821FB623FC3BF600B41CFB /* GenresModel.swift */,
+				1343D10B23EB57B300CFC68E /* FavoritesViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

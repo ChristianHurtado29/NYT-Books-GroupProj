@@ -12,13 +12,27 @@ import DataPersistence
 class SettingsViewController: UIViewController {
     
     public var dataPersistence: DataPersistence<BookInfo>!
-    
-    var genres = [String]()
         
     private let settingsView = SettingsView()
     
+    var genres = [String]() {
+        didSet{
+            DispatchQueue.main.async{
+                self.settingsView.pickerView.reloadAllComponents()
+            }
+        }
+    }
+    
     override func loadView() {
         view = settingsView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchGenres()
+        view.backgroundColor = .white
+        settingsView.pickerView.dataSource = self
+        settingsView.pickerView.delegate = self
     }
     
     private func fetchGenres(){
@@ -33,17 +47,9 @@ class SettingsViewController: UIViewController {
     }
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        fetchGenres()
-        view.backgroundColor = .white
-        settingsView.pickerView.dataSource = self
-        settingsView.pickerView.delegate = self
-    }
-
 }
 
-extension SettingsViewController: UIPickerViewDataSource{
+extension SettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -52,9 +58,12 @@ extension SettingsViewController: UIPickerViewDataSource{
         return genres.count 
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let sectionName = genres[row]
+    }
     
-}
-
-extension SettingsViewController: UIPickerViewDelegate {
-    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return genres[row]
+    }
 }
