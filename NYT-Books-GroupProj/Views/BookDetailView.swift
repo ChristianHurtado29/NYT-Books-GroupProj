@@ -53,10 +53,9 @@ class BookDetailView: UIView {
         bookImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bookImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant:  20),
-            bookImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             bookImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             bookImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
-            bookImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6)
+            bookImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
         ])
     }
     
