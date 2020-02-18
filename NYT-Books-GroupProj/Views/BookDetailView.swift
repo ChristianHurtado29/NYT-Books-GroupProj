@@ -19,13 +19,15 @@ class BookDetailView: UIView {
     public lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.text = "Christian Hurtado"
+        label.textAlignment = .center
         label.textColor = .systemBlue
         return label
     }()
     
     public lazy var bookTextView: UITextView = {
         let btv = UITextView()
-        btv.backgroundColor = .blue
+        btv.backgroundColor = .clear
+        btv.font = UIFont(name: "Kefa", size: 16)
         btv.text = "testing the book text view and it should be alooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong test"
         return btv
     }()
@@ -50,10 +52,10 @@ class BookDetailView: UIView {
         addSubview(bookImageView)
         bookImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bookImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            bookImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            bookImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant:  -40),
-            bookImageView.heightAnchor.constraint(equalToConstant: 300)
+            bookImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant:  20),
+            bookImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
+            bookImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
         ])
     }
     
@@ -61,7 +63,7 @@ class BookDetailView: UIView {
         addSubview(authorLabel)
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            authorLabel.topAnchor.constraint(equalToSystemSpacingBelow: bookImageView.bottomAnchor, multiplier: 10),
+            authorLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 20),
             authorLabel.leadingAnchor.constraint(equalTo: bookImageView.leadingAnchor, constant: 8),
             authorLabel.trailingAnchor.constraint(equalTo: bookImageView.trailingAnchor, constant: -8)
         ])
@@ -71,10 +73,10 @@ class BookDetailView: UIView {
         addSubview(bookTextView)
         bookTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bookTextView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 20),
-            bookTextView.leadingAnchor.constraint(equalTo: bookImageView.leadingAnchor),
-            bookTextView.trailingAnchor.constraint(equalTo: bookImageView.leadingAnchor),
-            bookTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
+            bookTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            bookTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            bookTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -160),
+            bookTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
         ])
     }
     
