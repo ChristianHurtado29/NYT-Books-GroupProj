@@ -119,6 +119,8 @@ class FavoritesCVC: UICollectionViewCell {
     }
     
     public func configureCell(book: BookInfo) {
+        bookItem = book
+        
         titleLabel.text = book.title
         
         textView.text = book.description
