@@ -40,8 +40,9 @@ class BookDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = book.title
-        view.backgroundColor = .yellow
+        view.backgroundColor = .systemPink
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(didFavoriteItem(_:)))
+        updateUI()
     }
     
     private func updateUI() {
