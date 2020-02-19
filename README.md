@@ -7,7 +7,9 @@ This app pulls up the most recent New York Times Bestsellers list and has the ab
 
 
 ## Challenges
+The challenging part of the app was piecing together the view controllers and persisting the information throughout the app.
 
+The most insteresting clip of code created was the links button that provides the user fast jumps to purchase their favorite books.
 
 ```swift
 extension FavoritesViewController: FavoriteDelegate {
